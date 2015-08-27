@@ -33,7 +33,7 @@ void calculateSurroundingPositions(char grid[], int targetCell, int results[])
   int counter = 0;
   //populating the surrounding squares
   //right
-  if((targetCell + 1 < NO_OF_COLUMNS) && (grid[targetCell+1] == '-' ))
+  if((targetCell + 1 < NO_OF_COLUMNS) && (grid[targetCell+1] == '-' ) && (targetCell + 1 % NO_OF_COLUMNS != 0))
     results[counter++] = targetCell+1;
   //left
   if((targetCell - 1 > 0) && (grid[targetCell-1] == '-') && (targetCell % NO_OF_COLUMNS != 0))
