@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define NO_OF_ROWS 8
-#define NO_OF_COLUMNS 8
-#define NO_OF_WORDS 5
+#define NO_OF_ROWS 7
+#define NO_OF_COLUMNS 7
+#define NO_OF_WORDS 10
 
 void initializeGrid(char grid[])
 {
@@ -51,13 +51,16 @@ void calculateSurroundingPositions(char grid[], int targetCell, int results[])
     results[counter++] = targetCell - (NO_OF_COLUMNS + 1);
   }
   //top right diagnol
-  if((targetCell - (NO_OF_COLUMNS - 1) >= 0) && (grid[targetCell-(NO_OF_COLUMNS - 1)] == '-') && ((targetCell - (NO_OF_COLUMNS - 1)) % NO_OF_COLUMNS != 0))
+  if((targetCell - (NO_OF_COLUMNS - 1) >= 0) && (grid[targetCell-(NO_OF_COLUMNS - 1)] == '-') && (((targetCell - (NO_OF_COLUMNS - 1)) % NO_OF_COLUMNS) != 0))
+  {
+    printf("here:%d",(targetCell-NO_OF_COLUMNS-1)%NO_OF_COLUMNS);
     results[counter++] = targetCell - (NO_OF_COLUMNS-1);
+  }
   //bottom left diagnol
-  if((targetCell + (NO_OF_COLUMNS - 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS - 1)] == '-') && (targetCell + (NO_OF_COLUMNS - 1) != NO_OF_COLUMNS - 1))
+  if((targetCell + (NO_OF_COLUMNS - 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS - 1)] == '-') && (((targetCell + (NO_OF_COLUMNS - 1)) % NO_OF_COLUMNS )!= NO_OF_COLUMNS - 1))
     results[counter++] = targetCell + (NO_OF_COLUMNS-1);
   //bottom right diagnol
-  if((targetCell + (NO_OF_COLUMNS + 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS + 1)] == '-') && ((targetCell + (NO_OF_COLUMNS + 1) % NO_OF_COLUMNS) < NO_OF_COLUMNS))
+  if((targetCell + (NO_OF_COLUMNS + 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS + 1)] == '-') && ((targetCell + (NO_OF_COLUMNS + 1)) % NO_OF_COLUMNS) < NO_OF_COLUMNS)
     results[counter++] = targetCell + (NO_OF_COLUMNS+1);
 
 }
@@ -114,8 +117,8 @@ int main()
 {
   char grid[NO_OF_ROWS * NO_OF_COLUMNS];
   int i;
-  // char inputList[NO_OF_WORDS][100]={"one","two","three","four","five","six","seven","eight","nine","ten"};
-char inputList[NO_OF_WORDS][100]={"one","two","three","four","five"};
+  char inputList[NO_OF_WORDS][100]={"one","two","three","four","five","six","seven","eight","nine","ten"};
+// char inputList[NO_OF_WORDS][100]={"one","two","three","four","five"};
 
   initializeGrid(grid);
   for(i=0;i<NO_OF_WORDS;i++)
