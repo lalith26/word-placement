@@ -46,10 +46,7 @@ void calculateSurroundingPositions(char grid[], int targetCell, int results[])
     results[counter++] = targetCell + NO_OF_COLUMNS;
   //top left diagnol
   if((targetCell - (NO_OF_COLUMNS + 1) >= 0) && (((targetCell-(NO_OF_COLUMNS+1))%NO_OF_COLUMNS) != NO_OF_COLUMNS - 1) && (grid[targetCell-(NO_OF_COLUMNS + 1)] == '-') )
-  {
-    printf("targetcell:%d, check:%d",targetCell, (targetCell-(NO_OF_COLUMNS+1))%NO_OF_COLUMNS);
     results[counter++] = targetCell - (NO_OF_COLUMNS + 1);
-  }
   //top right diagnol
   if((targetCell - (NO_OF_COLUMNS - 1) >= 0) && (grid[targetCell-(NO_OF_COLUMNS - 1)] == '-') && (((targetCell - (NO_OF_COLUMNS - 1)) % NO_OF_COLUMNS) != 0))
     results[counter++] = targetCell - (NO_OF_COLUMNS-1);
@@ -57,7 +54,7 @@ void calculateSurroundingPositions(char grid[], int targetCell, int results[])
   if((targetCell + (NO_OF_COLUMNS - 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS - 1)] == '-') && (((targetCell + (NO_OF_COLUMNS - 1)) % NO_OF_COLUMNS )!= NO_OF_COLUMNS - 1))
     results[counter++] = targetCell + (NO_OF_COLUMNS-1);
   //bottom right diagnol
-  if((targetCell + (NO_OF_COLUMNS + 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS + 1)] == '-') && ((targetCell + (NO_OF_COLUMNS + 1)) % NO_OF_COLUMNS) < NO_OF_COLUMNS)
+  if((targetCell + (NO_OF_COLUMNS + 1) >= 0) && (grid[targetCell+(NO_OF_COLUMNS + 1)] == '-') && ((targetCell + (NO_OF_COLUMNS + 1))) < (NO_OF_ROWS*NO_OF_COLUMNS) && ((targetCell + (NO_OF_COLUMNS+1))%NO_OF_COLUMNS) != 0)
     results[counter++] = targetCell + (NO_OF_COLUMNS+1);
 
 }
